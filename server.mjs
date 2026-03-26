@@ -161,9 +161,14 @@ app.post('/v1/messages', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`\n==================================================`);
-  console.log(`Competitor Social Scraper is running!`);
-  console.log(`URL: http://localhost:${PORT}`);
-  console.log(`==================================================\n`);
-});
+// Export the app for Vercel
+export default app;
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`\n==================================================`);
+    console.log(`Competitor Social Scraper is running!`);
+    console.log(`URL: http://localhost:${PORT}`);
+    console.log(`==================================================\n`);
+  });
+}
